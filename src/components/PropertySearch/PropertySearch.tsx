@@ -1,9 +1,25 @@
-import React from 'react';
+import { Properties } from 'interfaces/Properties';
+import React, { useEffect, useState } from 'react';
+import Results from './Results/Results';
 
 const PropertySearch: React.FC = () => {
+    const [properties, setProperties] = useState<Properties[]>([]);
+
+    const search = async () => {
+        const response: Response = await fetch(`/api/search`);
+        const data = await response.json();
+
+        setProperties(data.properties);
+        console.log('SEARCH DATA: ', data.properties);
+    };
+
+    useEffect(() => {
+        search();
+    }, []);
+
     return (
         <React.Fragment>
-            <div>Property PropertySearch</div>
+            <Results properties={properties} />
         </React.Fragment>
     );
 };

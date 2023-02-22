@@ -11,5 +11,5 @@ export const Heading = ({ textAlign, content, level }: HeadingInterface) => {
         ${getTextAlign(textAlign)}`,
     });
 
-    return <React.Fragment>{tag}</React.Fragment>;
+    return <React.Fragment>{tag} </React.Fragment>;
 };

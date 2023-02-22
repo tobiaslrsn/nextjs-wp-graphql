@@ -6,13 +6,13 @@ import { Heading } from 'components/Heading';
 import { Paragraph } from 'components/Paragraph/Paragraph';
 
 import { Block } from 'gql/graphql';
-import { RootObject } from 'interfaces/Menu';
 
 import React from 'react';
 import { theme } from '../../../theme';
 import Image from 'next/image';
 import PostTitle from 'components/PostTitle/PostTitle';
 import PropertySearch from 'components/PropertySearch/PropertySearch';
+import { RootObject } from 'interfaces/Root';
 
 // (element | undefined)[] Issue solved with fragments. If array empty, it can't return anything
 export const BlockRenderer = ({ blocks }: RootObject) => {
@@ -73,6 +73,7 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                             />
                         );
                     }
+
                     case 'core/cover': {
                         console.log('COVER BLOCK: ', block);
                         return (
@@ -133,6 +134,7 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                             />
                         );
                     }
+
                     default:
                         console.log('UNKNOWN: ', block);
                         return null;

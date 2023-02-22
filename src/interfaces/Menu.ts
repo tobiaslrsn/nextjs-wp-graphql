@@ -72,11 +72,3 @@ export interface CTAButton {
     callToActionLabel: string;
     callToActionDestination: string;
 }
-export interface RootObject {
-    cta?: CTAButton;
-    nodeByUri?: any;
-    acfOptionsMainMenu?: any;
-    mainMenuItems?: MainMenuItem[];
-    items?: Items[];
-    blocks?: Block[];
-}
