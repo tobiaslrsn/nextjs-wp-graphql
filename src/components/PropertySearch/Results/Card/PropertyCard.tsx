@@ -17,13 +17,15 @@ const PropertyCard: React.FC<Properties> = (props) => {
                 href={props.uri}
                 className="border-2 border border-gray-200 p-5 block bg-slate-100 hover:bg-slate-200"
             >
-                <div className="flex w-full">
+                <div className="flex w-full justify-center">
                     <Image
                         alt={`photo of ${props.title}`}
                         src={props.featuredImage.node.sourceUrl}
-                        width={300}
+                        width={400}
                         height={200}
-                        style={{ objectFit: 'cover' }}
+                        style={{
+                            objectFit: 'cover',
+                        }}
                     />
                 </div>
                 <div className="mt-3 text-lg font-bold text-slate-500">

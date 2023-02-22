@@ -1,10 +1,7 @@
 import { ApolloQueryResult, gql } from '@apollo/client';
 import client from 'client';
-import { Properties } from 'interfaces/Properties';
 import { RootObject } from 'interfaces/Root';
-
 import { NextApiRequest, NextApiResponse } from 'next';
-import { NextRequest, NextResponse } from 'next/server';
 
 const handler = async (
     req: NextApiRequest,
@@ -38,7 +35,7 @@ const handler = async (
             `,
         });
         return res.status(200).json({
-            properties: data.properties?.nodes, // TODO : SORT OUT TYPING
+            properties: data.properties?.nodes,
         });
     } catch (e) {
         console.log('ERROR: ', e);
