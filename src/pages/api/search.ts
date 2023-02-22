@@ -1,15 +1,14 @@
 import { ApolloQueryResult, gql } from '@apollo/client';
 import client from 'client';
+import { Properties } from 'interfaces/Properties';
 import { RootObject } from 'interfaces/Root';
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from 'next/server';
 
-interface SearchData {}
-
 const handler = async (
     req: NextApiRequest,
-    res: NextApiResponse<SearchData>
+    res: NextApiResponse<RootObject>
 ) => {
     try {
         const { data }: ApolloQueryResult<RootObject> = await client.query({
@@ -39,7 +38,7 @@ const handler = async (
             `,
         });
         return res.status(200).json({
-            properties: data.properties?.nodes,
+            properties: data.properties?.nodes, // TODO : SORT OUT TYPING
         });
     } catch (e) {
         console.log('ERROR: ', e);

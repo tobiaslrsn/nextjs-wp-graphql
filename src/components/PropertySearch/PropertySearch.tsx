@@ -4,22 +4,40 @@ import Results from './Results/Results';
 
 const PropertySearch: React.FC = () => {
     const [properties, setProperties] = useState<Properties[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const search = async () => {
-        const response: Response = await fetch(`/api/search`);
-        const data = await response.json();
+        setIsLoading(true);
 
-        setProperties(data.properties);
-        console.log('SEARCH DATA: ', data.properties);
+        fetch('/api/search')
+            .then((res) => res.json())
+            .then((data) => {
+                setIsLoading(false);
+                setProperties(data.properties);
+                console.log(data);
+            })
+            .catch((e) => {
+                console.log('error: ', e);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     useEffect(() => {
         search();
+        console.log(isLoading);
     }, []);
 
     return (
         <React.Fragment>
-            <Results properties={properties} />
+            {isLoading ? (
+                <>LOADING</>
+            ) : !properties ? (
+                <>No properties for sale right now</>
+            ) : (
+                <Results properties={properties} />
+            )}
         </React.Fragment>
     );
 };

@@ -1,5 +1,6 @@
 import { Properties } from 'interfaces/Properties';
 import React, { useState } from 'react';
+import PropertyCard from './Card/PropertyCard';
 
 interface Results {
     properties: Properties[];
@@ -8,24 +9,16 @@ interface Results {
 const Results: React.FC<Results> = ({ properties }) => {
     return (
         <React.Fragment>
-            <div className="max-w-5xl mx-auto grid grid-cols-3 gap-5 mb-10 mt-5 px-5">
+            <div className="max-w-5xl mx-auto grid grid-cols-3 gap-2 mb-2">
                 {properties.map((e) => {
                     return (
-                        <div key={e.databaseId}>
-                            <p>NAME: {e.title}</p>
-                            <p>
-                                BATHROOMS:{' '}
-                                {e.propertyFeatures?.bathrooms === null
-                                    ? 'none'
-                                    : e.propertyFeatures?.bathrooms}
-                            </p>
-                            <p>
-                                PARKING:{' '}
-                                {e.propertyFeatures.hasParking === null
-                                    ? 'none'
-                                    : 'yes'}
-                            </p>
-                        </div>
+                        <PropertyCard
+                            key={e.databaseId}
+                            title={e.title}
+                            uri={e.uri}
+                            propertyFeatures={e.propertyFeatures}
+                            featuredImage={e.featuredImage}
+                        />
                     );
                 })}
             </div>
