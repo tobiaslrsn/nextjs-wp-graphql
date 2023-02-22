@@ -3,7 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import numeral from 'numeral';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faBathtub,
+    faBed,
+    faCar,
+    faDog,
+} from '@fortawesome/free-solid-svg-icons';
 const PropertyCard: React.FC<Properties> = (props) => {
     return (
         <React.Fragment>
@@ -23,9 +29,46 @@ const PropertyCard: React.FC<Properties> = (props) => {
                 <div className="mt-3 text-lg font-bold text-slate-500">
                     {props.title}
                 </div>
-                <div className="text-lg  text-slate-500">
+                <div className="text-lg text-slate-500">
                     {numeral(props.propertyFeatures.price).format('0,0')}
                 </div>
+                <div className="flex justify-between text-sm mt-3">
+                    <div className="flex gap-1 items-center">
+                        <FontAwesomeIcon icon={faBathtub} size="lg" />
+                        {props.propertyFeatures.bathrooms === null ? (
+                            <>none</>
+                        ) : props.propertyFeatures.bathrooms! === 1 ? (
+                            <>{props.propertyFeatures.bathrooms} bathroom</>
+                        ) : (
+                            <>{props.propertyFeatures.bathrooms} bathrooms</>
+                        )}
+                    </div>
+                    <div className="flex gap-1 items-center">
+                        <FontAwesomeIcon icon={faBed} />
+                        {props.propertyFeatures.bedrooms} bedrooms
+                    </div>
+                </div>
+                {(!!props.propertyFeatures.hasParking ||
+                    !!props.propertyFeatures.petFriendly) && (
+                    <div className="flex justify-between text-sm mt-3">
+                        <div className="flex gap-1 items-center">
+                            {!!props.propertyFeatures.hasParking && (
+                                <React.Fragment>
+                                    <FontAwesomeIcon icon={faCar} /> Parking
+                                    available
+                                </React.Fragment>
+                            )}
+                        </div>
+                        <div className="flex gap-1 items-center">
+                            {!!props.propertyFeatures.petFriendly && (
+                                <React.Fragment>
+                                    <FontAwesomeIcon icon={faDog} /> Pet
+                                    friendly
+                                </React.Fragment>
+                            )}
+                        </div>
+                    </div>
+                )}
             </Link>
         </React.Fragment>
     );
