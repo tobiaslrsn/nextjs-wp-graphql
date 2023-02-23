@@ -12,7 +12,7 @@ const Results: React.FC<Results> = ({ properties }) => {
             <div className="max-w-5xl mx-auto mb-2 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
                 {properties.map((e) => {
                     return (
-                        <div className="mt-5 ">
+                        <div className="mt-5" key={e.databaseId}>
                             <PropertyCard
                                 key={e.databaseId}
                                 title={e.title}

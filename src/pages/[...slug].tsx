@@ -1,4 +1,4 @@
-import {  gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 import client from 'client';
 
 import Page from 'components/Page/Page';
@@ -6,11 +6,9 @@ import Page from 'components/Page/Page';
 import { SlugNodes } from 'interfaces/Slug';
 import { getPageStaticProps } from 'utils/getPageStaticProps';
 
-
 export default Page;
 
 export const getStaticProps = getPageStaticProps;
-
 export const getStaticPaths = async () => {
     // Get staticpaths = Available for page components to get/return an array  and it has to be named EXACTLY getStaticPath
     // Get staticProps is required when using staticPaths
@@ -34,15 +32,13 @@ export const getStaticPaths = async () => {
     });
 
     return {
-        paths: [...data.pages.nodes, ...data.properties.nodes].map((page: SlugNodes) => ({
-            params: {
-                slug: page.uri.substring(1, page.uri.length - 1).split('/'),
-            },
-        })),
+        paths: [...data.pages.nodes, ...data.properties.nodes].map(
+            (page: SlugNodes) => ({
+                params: {
+                    slug: page.uri.substring(1, page.uri.length - 1).split('/'),
+                },
+            })
+        ),
         fallback: true,
     };
 };
-
-
-        
-        

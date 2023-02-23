@@ -11,9 +11,7 @@ const ButtonLink: React.FC<ButtonLink> = ({ destination, label }) => {
         <React.Fragment>
             <div>
                 <Link href={destination}>
-                    <div className="btn" style={{ background: '#202020' }}>
-                        {label}
-                    </div>
+                    <div className="btn">{label}</div>
                 </Link>
             </div>
         </React.Fragment>

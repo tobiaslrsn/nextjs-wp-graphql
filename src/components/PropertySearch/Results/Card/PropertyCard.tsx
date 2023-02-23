@@ -26,6 +26,7 @@ const PropertyCard: React.FC<Properties> = (props) => {
                         style={{
                             objectFit: 'cover',
                         }}
+                        priority
                     />
                 </div>
                 <div className="mt-3 text-lg font-bold text-slate-500">

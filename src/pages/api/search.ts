@@ -11,7 +11,14 @@ const handler = async (
         const { data }: ApolloQueryResult<RootObject> = await client.query({
             query: gql`
                 query AllPropertiesQuery {
-                    properties {
+                    properties(
+                        where: { offsetPagination: { size: 3, offset: 0 } }
+                    ) {
+                        pageInfo {
+                            offsetPagination {
+                                total
+                            }
+                        }
                         nodes {
                             databaseId
                             title
@@ -34,7 +41,9 @@ const handler = async (
                 }
             `,
         });
+
         return res.status(200).json({
+            total: data.properties?.pageInfo.offsetPagination.total, //TODO: Sort typings
             properties: data.properties?.nodes,
         });
     } catch (e) {
