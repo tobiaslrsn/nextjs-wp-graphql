@@ -15,17 +15,16 @@ const PropertyCard: React.FC<Properties> = (props) => {
         <React.Fragment>
             <Link
                 href={props.uri}
-                className="border-2 border border-gray-200 p-5 block bg-slate-100 hover:bg-slate-200"
+                className="border-2 border border-gray-200 p-5 block bg-slate-100 hover:bg-slate-200 fader h-[100%]"
             >
-                <div className="flex w-full justify-center">
+                <div className="flex w-full justify-center fader">
                     <Image
                         alt={`photo of ${props.title}`}
                         src={props.featuredImage.node.sourceUrl}
-                        width={400}
-                        height={200}
-                        style={{
-                            objectFit: 'cover',
-                        }}
+                        width={500}
+                        height={300}
+                        style={{ objectFit: 'cover' }}
+                        className="h-[200px] w-[100%]"
                         priority
                     />
                 </div>

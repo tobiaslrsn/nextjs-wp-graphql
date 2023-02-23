@@ -8,6 +8,20 @@
         @apply bg-zinc-800 hover:bg-zinc-700 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
     }
 }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fader {
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+}
+
 /* !DIRECTIVES */
 @tailwind base;
 @tailwind components;
