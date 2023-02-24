@@ -1,5 +1,4 @@
 import Input from 'components/Inputs/Input';
-import { useLocalStorage } from 'hooks/useLocalStorage';
 
 import { PropertyFeatures } from 'interfaces/Properties';
 import queryString from 'query-string';
@@ -22,8 +21,6 @@ const Filters: React.FC<FiltersInterface> = ({ onSearch, filterByFeature }) => {
 
     const toggleFilter = () => {
         setFilter(!filter);
-        /* setFilterToggled(filter);
-        console.log(filterToggled); */
     };
 
     const onInputChangeMinPrice = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,19 +39,19 @@ const Filters: React.FC<FiltersInterface> = ({ onSearch, filterByFeature }) => {
         });
     };
 
-    /* function clearFilter () {
+    const clearFilter = () => {
         const {
             petFriendly: petFriendlyAlias,
             hasParking: hasParkingAlias,
             minPrice: minPriceAlias,
             maxPrice: maxPriceAlias,
         } = queryString.parse(window.location.search);
-        
-        setPetFriendly(petFriendlyAlias === "false"),
-        setHasParking(hasParkingAlias === "false")
-        setMinPrice(minPriceAlias === ""),
-        setMaxPrice(maxPriceAlias === ""),
-    } */
+
+        setHasParking(hasParkingAlias === hasParking);
+        setPetFriendly(petFriendlyAlias === petFriendly);
+        setMinPrice(minPriceAlias === minPrice);
+        setMaxPrice(maxPriceAlias === maxPrice);
+    };
 
     useEffect(() => {
         const {
@@ -144,9 +141,9 @@ const Filters: React.FC<FiltersInterface> = ({ onSearch, filterByFeature }) => {
                         </button>
                         <button
                             className="btn fader"
-                            /*   onClick={() => {
+                            onClick={() => {
                                 clearFilter();
-                            }} */
+                            }}
                         >
                             Clear
                         </button>
@@ -160,3 +157,6 @@ const Filters: React.FC<FiltersInterface> = ({ onSearch, filterByFeature }) => {
 };
 
 export default Filters;
+function useKeyPress(arg0: string) {
+    throw new Error('Function not implemented.');
+}
