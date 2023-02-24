@@ -1,7 +1,7 @@
 import { BlockRenderer } from 'components/BlockRenderer';
 import MainMenu from 'components/MainMenu/MainMenu';
 import { PageWrapper } from 'context/page';
-import { RootObject } from 'interfaces/Menu';
+import { RootObject } from 'interfaces/Root';
 
 const Page: React.FC<RootObject> = (props) => {
     console.log('PAGE PROPS: ', props);

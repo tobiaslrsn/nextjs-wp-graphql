@@ -41,13 +41,20 @@ interface OffsetTotal {
     total: number;
 }
 
-interface PropertyFeatures {
-    __typename: string;
+export interface PropertyFeatures {
+    __typename?: string;
     bathrooms?: number;
-    bedrooms: number;
+    bedrooms?: number;
     hasParking: boolean;
     petFriendly: boolean;
-    price: number;
+    price?: PropertyPrices;
+    minPrice: string;
+    maxPrice: string;
+}
+
+export interface PropertyPrices {
+    minPrice: number;
+    maxPrice: number;
 }
 
 export interface Properties {

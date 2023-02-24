@@ -11,15 +11,17 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
+        margin-left: -1px;
     }
     to {
         opacity: 1;
+        margin: 0;
     }
 }
 
 .fader {
     animation-name: fadeIn;
-    animation-duration: 0.6s;
+    animation-duration: 0.3s;
 }
 
 /* !DIRECTIVES */

@@ -8,7 +8,7 @@ export const Cover = ({ children, background }: CoverInterface) => {
 
     return (
         <React.Fragment>
-            <div className="h-screen text-white bg-zinc-100 relative min-h-[400px] flex justify-center items-center">
+            <div className="h-[90vh] mt-[] text-white bg-zinc-100 relative min-h-[400px] flex justify-center items-center">
                 {(!!background || !!featuredImage) && (
                     <Image
                         alt="cover"

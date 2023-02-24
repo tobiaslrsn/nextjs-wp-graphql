@@ -1,12 +1,17 @@
-import { Properties } from 'interfaces/Properties';
+import { Properties, PropertyFeatures } from 'interfaces/Properties';
 import { SlugNodes } from 'interfaces/Slug';
 import { NextRouter, useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Pagination from './Pagination/Pagination';
 import Results from './Results/Results';
 import queryString, { ParsedQuery } from 'query-string';
+import Filters from './filters/Filters';
 
-const PropertySearch: React.FC = () => {
+interface SearchAndFilter {
+    filtering: PropertyFeatures;
+}
+
+const PropertySearch: React.FC<SearchAndFilter> = ({ filtering }) => {
     const [properties, setProperties] = useState<Properties[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [totalResults, setTotalResults] = useState<number>(0);
@@ -15,10 +20,21 @@ const PropertySearch: React.FC = () => {
     const router: NextRouter = useRouter();
 
     const handlePagination = async (pageNumber: string) => {
+        const {
+            hasParking,
+            petFriendly,
+            minPrice,
+            maxPrice,
+        }: ParsedQuery<string> = queryString.parse(window.location.search);
+
         await router.push(
             `${
                 (router.query.slug as string | any).join('/') as string
-            }?page=${pageNumber}`,
+            }?page=${pageNumber}&petFriendly=${
+                petFriendly === 'true'
+            }&hasParking=${
+                hasParking === 'true'
+            }&minPrice=${minPrice}&maxPrice=${maxPrice}`,
             null as any,
             {
                 shallow: true,
@@ -30,14 +46,35 @@ const PropertySearch: React.FC = () => {
     const search = async () => {
         setIsLoading(true);
 
-        const { page }: string | any = queryString.parse(
-            window.location.search
-        );
+        const {
+            page,
+            minPrice,
+            maxPrice,
+            hasParking,
+            petFriendly,
+        }: ParsedQuery | any = queryString.parse(window.location.search);
+
+        const filters: ParsedQuery<PropertyFeatures | any> = {};
+
+        if (hasParking === 'true') {
+            filters.hasParking = true;
+        }
+
+        if (petFriendly === 'true') {
+            filters.petFriendly = true;
+        }
+        if (minPrice) {
+            filters.minPrice = parseInt(minPrice);
+        }
+        if (maxPrice) {
+            filters.maxPrice = parseInt(maxPrice);
+        }
 
         fetch('/api/search', {
             method: 'POST',
             body: JSON.stringify({
                 page: parseInt(page || '1'),
+                ...filters,
             }),
         })
             .then((res) => res.json())
@@ -57,17 +94,41 @@ const PropertySearch: React.FC = () => {
 
     useEffect(() => {
         search();
-        console.log(isLoading);
     }, []);
+
+    const handleSearch = async ({
+        petFriendly,
+        hasParking,
+        minPrice,
+        maxPrice,
+    }: PropertyFeatures) => {
+        console.log('FILTERS: ', hasParking, petFriendly, minPrice, maxPrice);
+
+        await router.push(
+            `${
+                (router.query.slug as string | any).join('/') as string
+            }?page=1&petFriendly=${!!petFriendly}&hasParking=${!!hasParking}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
+            null as any,
+            {
+                shallow: true,
+            }
+        );
+        search();
+    };
 
     return (
         <React.Fragment>
             {isLoading ? (
-                <>LOADING</>
+                // <>LOADING</>
+                <></>
             ) : !properties ? (
                 <>No properties for sale right now</>
             ) : (
                 <React.Fragment>
+                    <Filters
+                        onSearch={handleSearch}
+                        filterByFeature={filtering}
+                    />
                     <Results properties={properties} />
                     <Pagination
                         onPagination={handlePagination}
