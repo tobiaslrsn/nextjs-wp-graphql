@@ -1,24 +1,48 @@
 import { Gallery, InnerBlockGallery } from 'interfaces/Gallery';
 import { InnerBlock } from 'interfaces/Menu';
 import { RootObject } from 'interfaces/Root';
+import Image from 'next/image';
 import React, { Key } from 'react';
 
 const Gallery: React.FC<Gallery> = (props) => {
-    console.log('GALLERY PROPS: ', props);
+    const columnWidth: number = 100 / props.attributes.columns;
 
-    {
-        props.attributes?.columns || 3;
-    } // Set this in HTML
+    let maxHeight: any = 0;
+    let maxWidth: any = 0;
 
-    console.log(props.attributes);
+    if (props.attributes.imageCrop) {
+        props.innerBlocks.forEach((item) => {
+            if (item.attributes.height > maxHeight) {
+                maxHeight = item.attributes.height;
+            }
+            if (item.attributes.width > maxWidth) {
+                maxWidth = item.attributes.width;
+            }
+        });
+    }
 
     return (
         <React.Fragment>
             <div className="flex flex-wrap max-w-5xl mx-auto">
                 {props.innerBlocks.map((item: InnerBlockGallery) => (
                     <React.Fragment>
-                        TEST: {item.name || 'hello'} <br />
-                        TEST: {item.originalContent}
+                        <div
+                            style={{
+                                width: `${columnWidth}%`,
+                            }}
+                            className="p-5 flex-grow"
+                            key={item.id}
+                        >
+                            <Image
+                                src={item.attributes.url}
+                                height={maxHeight || item.attributes.height}
+                                width={maxWidth || item.attributes.width}
+                                alt={item.attributes.alt}
+                                style={{
+                                    objectFit: 'cover',
+                                }}
+                            />
+                        </div>
                     </React.Fragment>
                 ))}
             </div>

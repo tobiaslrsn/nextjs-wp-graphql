@@ -5,7 +5,6 @@ import { RootObject } from 'interfaces/Root';
 import Head from 'next/head';
 
 const Page: React.FC<RootObject> = (props) => {
-    console.log('PAGE PROPS: ', props);
     return (
         <div>
             {/* TODO: Sort out typing */}

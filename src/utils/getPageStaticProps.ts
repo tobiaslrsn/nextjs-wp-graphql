@@ -4,13 +4,14 @@ import { Properties, PropertyFeatures } from 'interfaces/Properties';
 import { RootObject } from 'interfaces/Root';
 import { MetaDesc } from 'interfaces/Seo';
 
-import { cleanAndTransformBlocks } from './cleanAndTransformBlocks';
 import { mapMainMenuItems } from './mapMainMenuItems';
 
 export const getPageStaticProps = async (context: any) => {
     const uri: string = context.params?.slug
         ? `/${context.params.slug.join('/')}/`
         : '/';
+
+    console.log('URI: ', uri);
 
     const { data }: ApolloQueryResult<RootObject> = await client.query({
         query: gql`
@@ -94,7 +95,6 @@ export const getPageStaticProps = async (context: any) => {
     });
 
     const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
-    console.log('DATA: ', data);
 
     return {
         props: {
@@ -125,3 +125,6 @@ export const getPageStaticProps = async (context: any) => {
         },
     };
 };
+function cleanAndTransformBlocks(blocksJSON: any) {
+    throw new Error('Function not implemented.');
+}
