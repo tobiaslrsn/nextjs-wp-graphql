@@ -16,10 +16,11 @@ import { RootObject } from 'interfaces/Root';
 
 import FormspreeForm from 'components/FormspreeForm/FormspreeForm';
 import PropertyFeatures from 'components/PropertyFeatures/PropertyFeatures';
+import Gallery from 'components/Gallery/Gallery';
 
 // (element | undefined)[] Issue solved with fragments. If array empty, it can't return anything
 export const BlockRenderer = ({ blocks }: RootObject) => {
-    console.log(blocks);
+    console.log('BLOCKS : ', blocks);
     return (
         <React.Fragment>
             {blocks?.map((block: Block) => {
@@ -110,7 +111,6 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                     }
 
                     case 'core/cover': {
-                        console.log('COVER BLOCK: ', block);
                         return (
                             <Cover
                                 key={block.id}
@@ -166,6 +166,19 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                                 width={block.attributes.width}
                                 height={block.attributes.height}
                                 alt={block.attributes.alt || ''}
+                            />
+                        );
+                    }
+
+                    case 'core/gallery': {
+                        return (
+                            <Gallery
+                                key={block.id}
+                                innerBlocks={block.innerBlocks} // TODO: Sort out typing
+                                name={block.name}
+                                originalContent={block.originalContent}
+                                attributes={block.attributes}
+                                id={block.attributes.id}
                             />
                         );
                     }

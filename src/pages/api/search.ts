@@ -47,7 +47,6 @@ const handler = async (
                     type: NUMERIC
                 }
             `;
-            console.log('MIN PRICE: ', minPriceFilter);
         }
 
         if (filters.maxPrice) {
@@ -59,7 +58,6 @@ const handler = async (
                     type: NUMERIC
                 }
             `;
-            console.log('MAX PRICE: ', maxPriceFilter);
         }
 
         const { data }: ApolloQueryResult<RootObject> = await client.query({

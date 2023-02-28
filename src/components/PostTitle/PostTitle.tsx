@@ -9,7 +9,6 @@ interface PostTitle {
 
 const PostTitle: React.FC<PostTitle> = ({ level, textAlign }) => {
     const { title }: any = usePageContext();
-    console.log('title', title);
 
     return (
         <React.Fragment>

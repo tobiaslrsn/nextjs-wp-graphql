@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+
 import { Key } from 'react';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -64,6 +65,7 @@ export enum AvatarRatingEnum {
 
 /** Gutenberg block interface */
 export type Block = {
+    originalContent: string;
     attributes: any;
     id: Key | null | undefined;
     /** Block attributes, JSON encoded */

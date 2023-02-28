@@ -1,5 +1,6 @@
 import { Block } from 'gql/graphql';
 import { FormspreeForm } from './FormspreeForm';
+import { Gallery } from './Gallery';
 import { CTAButton, MainMenuItem, Items } from './Menu';
 import { Properties, PropertyFeatures } from './Properties';
 import { MetaDesc } from './Seo';
@@ -14,6 +15,7 @@ export interface RootObject {
     properties?: Properties;
     formspreeForm?: FormspreeForm;
     propertyFeatures?: PropertyFeatures;
-    seo: MetaDesc;
+    seo?: MetaDesc;
+    gallery?: Gallery;
     // seo?: Seo;
 }

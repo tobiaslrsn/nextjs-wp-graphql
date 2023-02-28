@@ -83,7 +83,7 @@ const PropertySearch: React.FC<SearchAndFilter> = ({ filtering }) => {
                 setIsLoading(false);
                 setProperties(data.properties);
                 setTotalResults(data.total);
-                console.log(data);
+                console.log('DATA: ', data);
             })
             .catch((e) => {
                 console.log('error: ', e);
@@ -103,8 +103,6 @@ const PropertySearch: React.FC<SearchAndFilter> = ({ filtering }) => {
         minPrice,
         maxPrice,
     }: PropertyFeatures) => {
-        console.log('FILTERS: ', hasParking, petFriendly, minPrice, maxPrice);
-
         await router.push(
             `${
                 (router.query.slug as string | any).join('/') as string

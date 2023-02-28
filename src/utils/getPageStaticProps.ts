@@ -94,7 +94,7 @@ export const getPageStaticProps = async (context: any) => {
     });
 
     const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
-    console.log(data, ' me data ');
+    console.log('DATA: ', data);
 
     return {
         props: {
