@@ -3,6 +3,8 @@ import client from 'client';
 import { RootObject } from 'interfaces/Root';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+let perPage: any = Math.ceil(3);
+
 const handler = async (
     req: NextApiRequest,
     res: NextApiResponse<RootObject>
@@ -64,9 +66,9 @@ const handler = async (
             query: gql`
                 query AllPropertiesQuery {
                     properties( where: {
-                             offsetPagination: { size: 3, offset: ${
-                                 ((filters.page || 1) - 1) * 3
-                             } }
+                             offsetPagination: { size: ${perPage}, offset: ${
+                ((filters.page || 1) - 1) * perPage
+            } }
                         metaQuery: {
                             relation: AND
                             metaArray: [

@@ -38,11 +38,15 @@ const PropertyCard: React.FC<Properties> = (props) => {
                     <div className="flex gap-1 items-center">
                         <FontAwesomeIcon icon={faBathtub} size="lg" />
                         {props.propertyFeatures.bathrooms === null ? (
-                            <>none</>
+                            <React.Fragment>none</React.Fragment>
                         ) : props.propertyFeatures.bathrooms! === 1 ? (
-                            <>{props.propertyFeatures.bathrooms} bathroom</>
+                            <React.Fragment>
+                                {props.propertyFeatures.bathrooms} bathroom
+                            </React.Fragment>
                         ) : (
-                            <>{props.propertyFeatures.bathrooms} bathrooms</>
+                            <React.Fragment>
+                                {props.propertyFeatures.bathrooms} bathrooms
+                            </React.Fragment>
                         )}
                     </div>
                     <div className="flex gap-1 items-center">

@@ -5,7 +5,7 @@ export interface PropertyQuery {
     databaseId?: number;
 }
 
-interface NodeOne {
+export interface NodeOne {
     title: string;
     uri: string;
     featuredImage: FeaturedImage;
@@ -48,7 +48,7 @@ export interface PropertyFeatures {
     hasParking: boolean;
     petFriendly: boolean;
     price?: PropertyPrices;
-    minPrice: string;
+    minPrice: string | (string | null)[];
     maxPrice: string;
 }
 
@@ -58,6 +58,7 @@ export interface PropertyPrices {
 }
 
 export interface Properties {
+    properties: any;
     databaseId?: number;
     featuredImage: FeaturedImage;
     propertyFeatures: PropertyFeatures;

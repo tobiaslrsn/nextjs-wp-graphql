@@ -14,6 +14,9 @@ import PostTitle from 'components/PostTitle/PostTitle';
 import PropertySearch from 'components/PropertySearch/PropertySearch';
 import { RootObject } from 'interfaces/Root';
 
+import FormspreeForm from 'components/FormspreeForm/FormspreeForm';
+import PropertyFeatures from 'components/PropertyFeatures/PropertyFeatures';
+
 // (element | undefined)[] Issue solved with fragments. If array empty, it can't return anything
 export const BlockRenderer = ({ blocks }: RootObject) => {
     console.log(blocks);
@@ -32,7 +35,12 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                     }
 
                     case 'acf/propertysearch': {
-                        return <PropertySearch key={block.id} />;
+                        return (
+                            <PropertySearch
+                                key={block.id}
+                                filtering={undefined!}
+                            />
+                        );
                     }
 
                     case 'acf/ctabutton': {
@@ -44,6 +52,33 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                                     block.attributes.data.destination || '/'
                                 }
                                 align={block.attributes.data.align}
+                            />
+                        );
+                    }
+
+                    case 'acf/formspreeform': {
+                        return (
+                            <FormspreeForm
+                                key={block.id}
+                                attributes={block.attributes}
+                                innnerblocks={[]}
+                                name={''}
+                                originalContent={''}
+                                id={''}
+                                formId={block.attributes.data.form_id}
+                            />
+                        );
+                    }
+
+                    case 'acf/propertyfeatures': {
+                        return (
+                            <PropertyFeatures
+                                key={block.id}
+                                properties={block.attributes.properties}
+                                featuredImage={0}
+                                propertyFeatures={undefined}
+                                title={''}
+                                uri={''}
                             />
                         );
                     }

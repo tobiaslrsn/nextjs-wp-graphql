@@ -1,6 +1,9 @@
 import { ApolloQueryResult, gql } from '@apollo/client';
 import client from 'client';
-import { RootObject } from 'interfaces/Menu';
+import { Properties, PropertyFeatures } from 'interfaces/Properties';
+import { RootObject } from 'interfaces/Root';
+import { MetaDesc } from 'interfaces/Seo';
+
 import { cleanAndTransformBlocks } from './cleanAndTransformBlocks';
 import { mapMainMenuItems } from './mapMainMenuItems';
 
@@ -23,11 +26,26 @@ export const getPageStaticProps = async (context: any) => {
                                 sourceUrl
                             }
                         }
+                        seo {
+                            title
+                            metaDesc
+                        }
                     }
                     ... on Property {
                         id
                         title
                         blocksJSON
+                        seo {
+                            title
+                            metaDesc
+                        }
+                        propertyFeatures {
+                            bedrooms
+                            bathrooms
+                            hasParking
+                            petFriendly
+                            price
+                        }
                         featuredImage {
                             node {
                                 sourceUrl
@@ -80,7 +98,13 @@ export const getPageStaticProps = async (context: any) => {
 
     return {
         props: {
-            title: data.nodeByUri.title,
+            seo: data.nodeByUri.seo as MetaDesc,
+
+            title: data.nodeByUri.title as string,
+
+            propertyFeatures:
+                data.nodeByUri.propertyFeatures ||
+                (null as unknown as Properties),
 
             featuredImage:
                 data.nodeByUri.featuredImage?.node?.sourceUrl || null,

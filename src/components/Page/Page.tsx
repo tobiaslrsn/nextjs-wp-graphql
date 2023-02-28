@@ -1,7 +1,8 @@
 import { BlockRenderer } from 'components/BlockRenderer';
 import MainMenu from 'components/MainMenu/MainMenu';
-import { PageWrapper } from 'context/page';
+import { PageWrapper } from 'context/Page';
 import { RootObject } from 'interfaces/Root';
+import Head from 'next/head';
 
 const Page: React.FC<RootObject> = (props) => {
     console.log('PAGE PROPS: ', props);
@@ -13,13 +14,18 @@ const Page: React.FC<RootObject> = (props) => {
                 value={{
                     title: props.title,
                     featuredImage: props.featuredImage,
+                    propertyFeatures: props.propertyFeatures,
                 }}
             >
+                <Head>
+                    <title>{props.seo.title}</title>
+
+                    <meta name="description" content={props.seo.metaDesc} />
+                </Head>
                 <MainMenu
                     items={props.mainMenuItems}
                     callToActionLabel={props.callToActionLabel}
                     callToActionDestination={props.callToActionDestination}
-                    // homeLabel={props.homeLabel}
                     homeLabel={props.homeLabel}
                 />
                 <BlockRenderer blocks={props.blocks} />
@@ -27,4 +33,5 @@ const Page: React.FC<RootObject> = (props) => {
         </div>
     );
 };
+
 export default Page;

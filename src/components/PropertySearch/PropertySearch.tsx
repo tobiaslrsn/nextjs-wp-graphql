@@ -6,7 +6,6 @@ import Pagination from './Pagination/Pagination';
 import Results from './Results/Results';
 import queryString, { ParsedQuery } from 'query-string';
 import Filters from './filters/Filters';
-import useKeyPress from 'hooks/setKeypress';
 
 interface SearchAndFilter {
     filtering: PropertyFeatures;

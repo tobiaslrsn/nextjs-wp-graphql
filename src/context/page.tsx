@@ -9,5 +9,5 @@ export const PageWrapper = ({ value, children }: any) => {
 };
 
 export const usePageContext = () => {
-    return useContext(PageContext);
+    return useContext<any>(PageContext);
 };

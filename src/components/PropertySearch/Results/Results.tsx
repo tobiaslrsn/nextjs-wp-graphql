@@ -19,6 +19,7 @@ const Results: React.FC<Results> = ({ properties }) => {
                                 uri={e.uri}
                                 propertyFeatures={e.propertyFeatures}
                                 featuredImage={e.featuredImage}
+                                properties={properties}
                             />
                         </div>
                     );

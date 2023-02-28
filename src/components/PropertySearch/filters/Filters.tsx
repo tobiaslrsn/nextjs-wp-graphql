@@ -14,10 +14,18 @@ const STORAGE_KEY: string = 'filterOpenToggle';
 
 const Filters: React.FC<FiltersInterface> = ({ onSearch, filterByFeature }) => {
     const [filter, setFilter] = useState<boolean>();
-    const [petFriendly, setPetFriendly] = useState<boolean>(false);
-    const [hasParking, setHasParking] = useState<boolean>(false);
-    const [minPrice, setMinPrice] = useState<string>('');
-    const [maxPrice, setMaxPrice] = useState<string>('');
+    const [petFriendly, setPetFriendly] = useState<
+        PropertyFeatures | any | boolean
+    >(false);
+    const [hasParking, setHasParking] = useState<
+        PropertyFeatures | any | boolean
+    >(false);
+    const [minPrice, setMinPrice] = useState<PropertyFeatures | any | string>(
+        ''
+    );
+    const [maxPrice, setMaxPrice] = useState<PropertyFeatures | any | string>(
+        ''
+    );
 
     const toggleFilter = () => {
         setFilter(!filter);

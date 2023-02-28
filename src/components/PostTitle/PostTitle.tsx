@@ -1,5 +1,5 @@
 import { Heading } from 'components/Heading';
-import { usePageContext } from 'context/page';
+import { usePageContext } from 'context/Page';
 import React from 'react';
 
 interface PostTitle {

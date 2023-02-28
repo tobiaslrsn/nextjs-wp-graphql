@@ -1,4 +1,4 @@
-import { usePageContext } from 'context/page';
+import { usePageContext } from 'context/Page';
 import { CoverInterface } from 'interfaces/Cover';
 import Image from 'next/image';
 import React from 'react';
