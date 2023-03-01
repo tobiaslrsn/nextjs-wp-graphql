@@ -20,10 +20,10 @@ import Gallery from 'components/Gallery/Gallery';
 
 // (element | undefined)[] Issue solved with fragments. If array empty, it can't return anything
 export const BlockRenderer = ({ blocks }: RootObject) => {
-    console.log('BLOCKS : ', blocks);
+    // console.log('BLOCKS : ', blocks);
     return (
         <React.Fragment>
-            {blocks?.map((block: Block) => {
+            {blocks?.map((block: any) => {
                 switch (block.name) {
                     case 'core/post-title': {
                         return (
@@ -125,9 +125,18 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                     }
 
                     case 'core/columns': {
+                        console.log('COLUMNS: ', block.attributes);
                         return (
                             <Columns
                                 key={block.id}
+                                textColor={
+                                    theme[block.attributes.textColor] ||
+                                    block.attributes.style?.color?.text
+                                }
+                                backgroundColor={
+                                    theme[block.attributes.backgroundColor] ||
+                                    block.attributes.style?.background
+                                }
                                 isStackedOnMobile={
                                     block.attributes.isStackedOnMobile
                                 }
@@ -166,6 +175,9 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                                 width={block.attributes.width}
                                 height={block.attributes.height}
                                 alt={block.attributes.alt || ''}
+                                style={{
+                                    objectFit: 'cover',
+                                }}
                             />
                         );
                     }

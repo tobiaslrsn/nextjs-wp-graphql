@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "\n            query NewQuery {\n                nodeByUri(uri: \"/\") {\n                    id\n                    ... on Page {\n                        id\n                        title\n                        blocksJSON\n                    }\n                }\n            }\n        ": types.NewQueryDocument,
+    "\n            query ALLPagesQuery {\n                pages {\n                    nodes {\n                        uri\n                    }\n                }\n                properties {\n                    nodes {\n                        uri\n                    }\n                }\n            }\n        ": types.AllPagesQueryDocument,
 };
 
 /**
@@ -33,7 +33,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n            query NewQuery {\n                nodeByUri(uri: \"/\") {\n                    id\n                    ... on Page {\n                        id\n                        title\n                        blocksJSON\n                    }\n                }\n            }\n        "): (typeof documents)["\n            query NewQuery {\n                nodeByUri(uri: \"/\") {\n                    id\n                    ... on Page {\n                        id\n                        title\n                        blocksJSON\n                    }\n                }\n            }\n        "];
+export function graphql(source: "\n            query ALLPagesQuery {\n                pages {\n                    nodes {\n                        uri\n                    }\n                }\n                properties {\n                    nodes {\n                        uri\n                    }\n                }\n            }\n        "): (typeof documents)["\n            query ALLPagesQuery {\n                pages {\n                    nodes {\n                        uri\n                    }\n                }\n                properties {\n                    nodes {\n                        uri\n                    }\n                }\n            }\n        "];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

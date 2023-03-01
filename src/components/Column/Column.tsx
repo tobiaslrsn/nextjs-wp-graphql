@@ -1,21 +1,22 @@
-import React from "react"
+import React from 'react';
 
 interface Column {
     children: React.ReactNode;
     width: string;
 }
 
-const Column: React.FC <Column> = ({ children, width }) => {
+const Column: React.FC<Column> = ({ children, width }) => {
+    const widthStyle = width
+        ? { minWidth: width, flexGrow: 1 }
+        : { flexGrow: 1, flexBasis: 0 };
 
-    const widthStyle = width 
-        ? {minWidth: width, flexGrow: 1} 
-        : {flexGrow: 1, flexBasis: 0}
-
-    return(
+    return (
         <React.Fragment>
-            <div style={widthStyle} className="px-2 py-5">{children}</div>
+            <div style={widthStyle} className="px-2 py-5">
+                {children}
+            </div>
         </React.Fragment>
-    )
-}
+    );
+};
 
-export default Column
+export default Column;

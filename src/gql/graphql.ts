@@ -1,7 +1,5 @@
 /* eslint-disable */
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
-
-import { Key } from 'react';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -22,6 +20,197 @@ export type Scalars = {
     Float: number;
     BlockAttributesArray: any;
     BlockAttributesObject: any;
+};
+
+/** acf/ctabutton block */
+export type AcfCtabuttonBlock = Block & {
+    __typename?: 'AcfCtabuttonBlock';
+    attributes?: Maybe<AcfCtabuttonBlockAttributes>;
+    /** Block attributes, JSON encoded */
+    attributesJSON?: Maybe<Scalars['String']>;
+    /** Server side rendered content. */
+    dynamicContent?: Maybe<Scalars['String']>;
+    /** Gutenberg blocks */
+    innerBlocks?: Maybe<Array<Block>>;
+    /** Is block rendered server side. */
+    isDynamic: Scalars['Boolean'];
+    /** Name of the block. */
+    name: Scalars['String'];
+    order: Scalars['Int'];
+    /** Parent post. */
+    parentNode: Node;
+    /** Parent post id. */
+    parentNodeDatabaseId: Scalars['Int'];
+};
+
+export type AcfCtabuttonBlockAttributes = {
+    __typename?: 'AcfCtabuttonBlockAttributes';
+    align?: Maybe<Scalars['String']>;
+    className?: Maybe<Scalars['String']>;
+    data?: Maybe<Scalars['BlockAttributesObject']>;
+    lock?: Maybe<Scalars['BlockAttributesObject']>;
+    mode?: Maybe<Scalars['String']>;
+    name?: Maybe<Scalars['String']>;
+};
+
+/** A Field Group registered by ACF */
+export type AcfFieldGroup = {
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+};
+
+/** acf/formspreeform block */
+export type AcfFormspreeformBlock = Block & {
+    __typename?: 'AcfFormspreeformBlock';
+    attributes?: Maybe<AcfFormspreeformBlockAttributes>;
+    /** Block attributes, JSON encoded */
+    attributesJSON?: Maybe<Scalars['String']>;
+    /** Server side rendered content. */
+    dynamicContent?: Maybe<Scalars['String']>;
+    /** Gutenberg blocks */
+    innerBlocks?: Maybe<Array<Block>>;
+    /** Is block rendered server side. */
+    isDynamic: Scalars['Boolean'];
+    /** Name of the block. */
+    name: Scalars['String'];
+    order: Scalars['Int'];
+    /** Parent post. */
+    parentNode: Node;
+    /** Parent post id. */
+    parentNodeDatabaseId: Scalars['Int'];
+};
+
+export type AcfFormspreeformBlockAttributes = {
+    __typename?: 'AcfFormspreeformBlockAttributes';
+    align?: Maybe<Scalars['String']>;
+    className?: Maybe<Scalars['String']>;
+    data?: Maybe<Scalars['BlockAttributesObject']>;
+    lock?: Maybe<Scalars['BlockAttributesObject']>;
+    mode?: Maybe<Scalars['String']>;
+    name?: Maybe<Scalars['String']>;
+};
+
+/** Main menu options. */
+export type AcfOptionsMainMenu = {
+    __typename?: 'AcfOptionsMainMenu';
+    /** Added to the GraphQL Schema because the ACF Field Group &quot;Menu (main)&quot; was set to Show in GraphQL. */
+    mainMenu?: Maybe<AcfOptionsMainMenu_Mainmenu>;
+    pageSlug?: Maybe<Scalars['String']>;
+    pageTitle?: Maybe<Scalars['String']>;
+};
+
+/** Field Group */
+export type AcfOptionsMainMenu_Mainmenu = AcfFieldGroup & {
+    __typename?: 'AcfOptionsMainMenu_Mainmenu';
+    callToActionButton?: Maybe<AcfOptionsMainMenu_Mainmenu_CallToActionButton>;
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+    homeLabel?: Maybe<Scalars['String']>;
+    menuItems?: Maybe<Array<Maybe<AcfOptionsMainMenu_Mainmenu_MenuItems>>>;
+};
+
+/** Field Group */
+export type AcfOptionsMainMenu_Mainmenu_CallToActionButton = AcfFieldGroup & {
+    __typename?: 'AcfOptionsMainMenu_Mainmenu_CallToActionButton';
+    destination?: Maybe<AcfOptionsMainMenu_Mainmenu_CallToActionButton_Destination>;
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+    label?: Maybe<Scalars['String']>;
+};
+
+export type AcfOptionsMainMenu_Mainmenu_CallToActionButton_Destination = Page;
+
+/** Field Group */
+export type AcfOptionsMainMenu_Mainmenu_MenuItems = AcfFieldGroup & {
+    __typename?: 'AcfOptionsMainMenu_Mainmenu_menuItems';
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+    items?: Maybe<Array<Maybe<AcfOptionsMainMenu_Mainmenu_MenuItems_Items>>>;
+    menuItem?: Maybe<AcfOptionsMainMenu_Mainmenu_MenuItems_MenuItem>;
+};
+
+/** Field Group */
+export type AcfOptionsMainMenu_Mainmenu_MenuItems_MenuItem = AcfFieldGroup & {
+    __typename?: 'AcfOptionsMainMenu_Mainmenu_menuItems_MenuItem';
+    destination?: Maybe<AcfOptionsMainMenu_Mainmenu_MenuItems_MenuItem_Destination>;
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+    label?: Maybe<Scalars['String']>;
+};
+
+export type AcfOptionsMainMenu_Mainmenu_MenuItems_MenuItem_Destination = Page;
+
+/** Field Group */
+export type AcfOptionsMainMenu_Mainmenu_MenuItems_Items = AcfFieldGroup & {
+    __typename?: 'AcfOptionsMainMenu_Mainmenu_menuItems_items';
+    destination?: Maybe<AcfOptionsMainMenu_Mainmenu_MenuItems_Items_Destination>;
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+    label?: Maybe<Scalars['String']>;
+};
+
+export type AcfOptionsMainMenu_Mainmenu_MenuItems_Items_Destination = Page;
+
+/** acf/propertyfeatures block */
+export type AcfPropertyfeaturesBlock = Block & {
+    __typename?: 'AcfPropertyfeaturesBlock';
+    attributes?: Maybe<AcfPropertyfeaturesBlockAttributes>;
+    /** Block attributes, JSON encoded */
+    attributesJSON?: Maybe<Scalars['String']>;
+    /** Server side rendered content. */
+    dynamicContent?: Maybe<Scalars['String']>;
+    /** Gutenberg blocks */
+    innerBlocks?: Maybe<Array<Block>>;
+    /** Is block rendered server side. */
+    isDynamic: Scalars['Boolean'];
+    /** Name of the block. */
+    name: Scalars['String'];
+    order: Scalars['Int'];
+    /** Parent post. */
+    parentNode: Node;
+    /** Parent post id. */
+    parentNodeDatabaseId: Scalars['Int'];
+};
+
+export type AcfPropertyfeaturesBlockAttributes = {
+    __typename?: 'AcfPropertyfeaturesBlockAttributes';
+    align?: Maybe<Scalars['String']>;
+    className?: Maybe<Scalars['String']>;
+    data?: Maybe<Scalars['BlockAttributesObject']>;
+    lock?: Maybe<Scalars['BlockAttributesObject']>;
+    mode?: Maybe<Scalars['String']>;
+    name?: Maybe<Scalars['String']>;
+};
+
+/** acf/propertysearch block */
+export type AcfPropertysearchBlock = Block & {
+    __typename?: 'AcfPropertysearchBlock';
+    attributes?: Maybe<AcfPropertysearchBlockAttributes>;
+    /** Block attributes, JSON encoded */
+    attributesJSON?: Maybe<Scalars['String']>;
+    /** Server side rendered content. */
+    dynamicContent?: Maybe<Scalars['String']>;
+    /** Gutenberg blocks */
+    innerBlocks?: Maybe<Array<Block>>;
+    /** Is block rendered server side. */
+    isDynamic: Scalars['Boolean'];
+    /** Name of the block. */
+    name: Scalars['String'];
+    order: Scalars['Int'];
+    /** Parent post. */
+    parentNode: Node;
+    /** Parent post id. */
+    parentNodeDatabaseId: Scalars['Int'];
+};
+
+export type AcfPropertysearchBlockAttributes = {
+    __typename?: 'AcfPropertysearchBlockAttributes';
+    align?: Maybe<Scalars['String']>;
+    className?: Maybe<Scalars['String']>;
+    data?: Maybe<Scalars['BlockAttributesObject']>;
+    lock?: Maybe<Scalars['BlockAttributesObject']>;
+    mode?: Maybe<Scalars['String']>;
+    name?: Maybe<Scalars['String']>;
 };
 
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
@@ -65,9 +254,6 @@ export enum AvatarRatingEnum {
 
 /** Gutenberg block interface */
 export type Block = {
-    originalContent: string;
-    attributes: any;
-    id: Key | null | undefined;
     /** Block attributes, JSON encoded */
     attributesJSON?: Maybe<Scalars['String']>;
     /** Server side rendered content. */
@@ -11558,6 +11744,8 @@ export type Property = BlockEditorContentNode &
         previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
         /** Whether the object is a node in the preview state */
         previewRevisionId?: Maybe<Scalars['ID']>;
+        /** Added to the GraphQL Schema because the ACF Field Group &quot;Property features&quot; was set to Show in GraphQL. */
+        propertyFeatures?: Maybe<Property_Propertyfeatures>;
         /**
          * The id field matches the WP_Post-&gt;ID field.
          * @deprecated Deprecated in favor of the databaseId field
@@ -11641,6 +11829,18 @@ export type PropertyToPreviewConnectionEdge = Edge &
         /** The node of the connection, without the edges */
         node: Property;
     };
+
+/** Field Group */
+export type Property_Propertyfeatures = AcfFieldGroup & {
+    __typename?: 'Property_Propertyfeatures';
+    bathrooms?: Maybe<Scalars['Float']>;
+    bedrooms?: Maybe<Scalars['Float']>;
+    /** The name of the ACF Field Group */
+    fieldGroupName?: Maybe<Scalars['String']>;
+    hasParking?: Maybe<Scalars['Boolean']>;
+    petFriendly?: Maybe<Scalars['Boolean']>;
+    price?: Maybe<Scalars['Float']>;
+};
 
 /** The reading setting type */
 export type ReadingSettings = {
@@ -12304,6 +12504,8 @@ export type RootMutationUpdateUserArgs = {
 /** The root entry point into the Graph */
 export type RootQuery = {
     __typename?: 'RootQuery';
+    /** Main menu options. */
+    acfOptionsMainMenu?: Maybe<AcfOptionsMainMenu>;
     /** Entry point to get all settings for the site */
     allSettings?: Maybe<Settings>;
     /** Connection between the RootQuery type and the BlockEditorContentNode type */
@@ -15300,8 +15502,22 @@ export type Template_Blank = ContentTemplate & {
 };
 
 /** The template assigned to the node */
-export type Template_BlogAlternative = ContentTemplate & {
-    __typename?: 'Template_BlogAlternative';
+export type Template_PageLargeHeader = ContentTemplate & {
+    __typename?: 'Template_PageLargeHeader';
+    /** The name of the template */
+    templateName?: Maybe<Scalars['String']>;
+};
+
+/** The template assigned to the node */
+export type Template_PageNoSeparators = ContentTemplate & {
+    __typename?: 'Template_PageNoSeparators';
+    /** The name of the template */
+    templateName?: Maybe<Scalars['String']>;
+};
+
+/** The template assigned to the node */
+export type Template_SinglePostNoSeparators = ContentTemplate & {
+    __typename?: 'Template_SinglePostNoSeparators';
     /** The name of the template */
     templateName?: Maybe<Scalars['String']>;
 };
@@ -17125,67 +17341,39 @@ export type YoastSeoBreadcrumbsBlockAttributes = {
     lock?: Maybe<Scalars['BlockAttributesObject']>;
 };
 
-export type NewQueryQueryVariables = Exact<{ [key: string]: never }>;
+export type AllPagesQueryQueryVariables = Exact<{ [key: string]: never }>;
 
-export type NewQueryQuery = {
+export type AllPagesQueryQuery = {
     __typename?: 'RootQuery';
-    nodeByUri?:
-        | { __typename?: 'BlockEditorPreview'; id: string }
-        | { __typename?: 'Category'; id: string }
-        | { __typename?: 'ContentType'; id: string }
-        | { __typename?: 'MediaItem'; id: string }
-        | {
-              __typename?: 'Page';
-              id: string;
-              title?: string | null;
-              blocksJSON?: string | null;
-          }
-        | { __typename?: 'Post'; id: string }
-        | { __typename?: 'PostFormat'; id: string }
-        | { __typename?: 'Property'; id: string }
-        | { __typename?: 'ReusableBlock'; id: string }
-        | { __typename?: 'Tag'; id: string }
-        | { __typename?: 'User'; id: string }
-        | null;
+    pages?: {
+        __typename?: 'RootQueryToPageConnection';
+        nodes: Array<{ __typename?: 'Page'; uri?: string | null }>;
+    } | null;
+    properties?: {
+        __typename?: 'RootQueryToPropertyConnection';
+        nodes: Array<{ __typename?: 'Property'; uri?: string | null }>;
+    } | null;
 };
 
-export const NewQueryDocument = {
+export const AllPagesQueryDocument = {
     kind: 'Document',
     definitions: [
         {
             kind: 'OperationDefinition',
             operation: 'query',
-            name: { kind: 'Name', value: 'NewQuery' },
+            name: { kind: 'Name', value: 'ALLPagesQuery' },
             selectionSet: {
                 kind: 'SelectionSet',
                 selections: [
                     {
                         kind: 'Field',
-                        name: { kind: 'Name', value: 'nodeByUri' },
-                        arguments: [
-                            {
-                                kind: 'Argument',
-                                name: { kind: 'Name', value: 'uri' },
-                                value: {
-                                    kind: 'StringValue',
-                                    value: '/',
-                                    block: false,
-                                },
-                            },
-                        ],
+                        name: { kind: 'Name', value: 'pages' },
                         selectionSet: {
                             kind: 'SelectionSet',
                             selections: [
                                 {
                                     kind: 'Field',
-                                    name: { kind: 'Name', value: 'id' },
-                                },
-                                {
-                                    kind: 'InlineFragment',
-                                    typeCondition: {
-                                        kind: 'NamedType',
-                                        name: { kind: 'Name', value: 'Page' },
-                                    },
+                                    name: { kind: 'Name', value: 'nodes' },
                                     selectionSet: {
                                         kind: 'SelectionSet',
                                         selections: [
@@ -17193,21 +17381,32 @@ export const NewQueryDocument = {
                                                 kind: 'Field',
                                                 name: {
                                                     kind: 'Name',
-                                                    value: 'id',
+                                                    value: 'uri',
                                                 },
                                             },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'properties' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'nodes' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
                                             {
                                                 kind: 'Field',
                                                 name: {
                                                     kind: 'Name',
-                                                    value: 'title',
-                                                },
-                                            },
-                                            {
-                                                kind: 'Field',
-                                                name: {
-                                                    kind: 'Name',
-                                                    value: 'blocksJSON',
+                                                    value: 'uri',
                                                 },
                                             },
                                         ],
@@ -17220,4 +17419,4 @@ export const NewQueryDocument = {
             },
         },
     ],
-} as unknown as DocumentNode<NewQueryQuery, NewQueryQueryVariables>;
+} as unknown as DocumentNode<AllPagesQueryQuery, AllPagesQueryQueryVariables>;
