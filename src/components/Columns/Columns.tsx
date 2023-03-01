@@ -13,18 +13,27 @@ const Columns: React.FC<Columns> = ({
     children,
     textColor,
 }) => {
-    console.log('BG: ', backgroundColor);
+    const textColourStyle = textColor
+        ? { color: textColor }
+        : { color: '#555555' };
+    const backgroundColourStyle = backgroundColor
+        ? { backgroundColor: backgroundColor }
+        : { color: '#555555' };
+
     return (
         <React.Fragment>
-            <div className="my-10">
+            <div
+                className="my-10"
+                style={{
+                    backgroundColor: backgroundColor,
+                    color: '#555555',
+                    padding: '20px',
+                    // ...textColourStyle, ...backgroundColourStyle
+                }}
+            >
                 <div
-                    className={`max-w-7xl mx-auto 
+                    className={`max-w-5xl mx-auto 
                     ${isStackedOnMobile ? 'block md:flex' : 'flex'}`}
-                    style={{
-                        backgroundColor: backgroundColor,
-                        color: '#555555',
-                        padding: '20px',
-                    }}
                 >
                     {children}
                 </div>

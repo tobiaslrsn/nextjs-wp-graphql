@@ -17,6 +17,7 @@ import { RootObject } from 'interfaces/Root';
 import FormspreeForm from 'components/FormspreeForm/FormspreeForm';
 import PropertyFeatures from 'components/PropertyFeatures/PropertyFeatures';
 import Gallery from 'components/Gallery/Gallery';
+import TickItem from 'components/TickItem/TickItem';
 
 // (element | undefined)[] Issue solved with fragments. If array empty, it can't return anything
 export const BlockRenderer = ({ blocks }: RootObject) => {
@@ -54,6 +55,14 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                                 }
                                 align={block.attributes.data.align}
                             />
+                        );
+                    }
+
+                    case 'acf/tickitem': {
+                        return (
+                            <TickItem key={block.id} AcfTickitemBlock={block}>
+                                <BlockRenderer blocks={block.innerBlocks} />
+                            </TickItem>
                         );
                     }
 
@@ -151,6 +160,14 @@ export const BlockRenderer = ({ blocks }: RootObject) => {
                             <Column
                                 key={block.id}
                                 width={block.attributes.width}
+                                textColor={
+                                    theme[block.attributes.textColor] ||
+                                    block.attributes.style?.color?.text
+                                }
+                                backgroundColor={
+                                    theme[block.attributes.backgroundColor] ||
+                                    block.attributes.style?.background
+                                }
                             >
                                 <BlockRenderer blocks={block.innerBlocks!} />
                             </Column>
